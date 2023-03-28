@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tally count</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- To link our js -->
+    <!-- It has to defer because if not our html is not going to exist -->
+    <script src="/scripts.js" defer></script>
+
+    <!--This is to link the roboto font to our page-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;900&;family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+        <header class="header">
+            <h1 class="header_title">Tally Count</h1>
+        </header>
+
+        <aside class="controls">
+            <label>
+                <span>Display</span>
+                    <select>
+                        <option>Single</option>
+                        <option>Multiple</option>
+                    </select>
+            </label>
+
+
+            <label>
+                <span>Counter</span> 
+               <!--Selct allows things to be in a form dropdown list-->
+                    <select>
+                        <option>Counter 1</option>
+                        <option>Counter 2</option>
+                        <option>Counter 3</option>
+                    </select>
+            </label>
+
+            <button>Setting</button>
+        </aside> 
+
+        <main class="counter">
+        <!--This is where numbers are typed-->    
+            <input class="counter_value" data-key="number" readonly value="0">
+        <!--Button to increase or decrease a number--> 
+            <div class="counter_actions">
+                <button data-key="subtract" class="counter_button
+                counter_button_first">-</button>
+                <button data-key="add" class="counter_button">+</button>
+            </div>
+        </main>
+
+        <footer class="footer">
+                Inspired by <a class="footer_link" href="https://tallycount.app/">Tally Count</a>
+                Note that this is merely a student practice project for learning JavaScript       
+        </footer>
+
+</body>
+</html>
