@@ -1,14 +1,14 @@
-let year = 2050
+let date = 2050
 let status = 'student'
 let count = 0
 
-if (year = 2050) {
+if (date = 2050) {
 	console.log("January", 'New Year’s Day')
 	console.log("March", 'Human Rights Day')
 	date = 'April'
 	console.log(date, 'Family Day')
 	console.log(date, 'Freedom Day')
-	count += 4
+	count = count + 4
 
 	if (status === "student") {
 	  console.log('June', 'Youth Day')
@@ -31,5 +31,5 @@ if (year = 2050) {
 }
 
 console.log('Your status is:', status)
-console.log('The year is:', year)
+console.log('The year is:', date)
 console.log('The total holidays is:', count)
