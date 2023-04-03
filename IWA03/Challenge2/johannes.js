@@ -1,7 +1,7 @@
 // johannes.js
 
-export let firstname = "Johannes"
-export let surname = "Potgieter"
+let firstname = "Johannes"
+let surname = "Potgieter"
 export const role = "Intern"
 
 let display= firstname + " " + surname + " (" + role + ")"

@@ -1,6 +1,6 @@
 // scripts.js
-import {firstname, surname, role as Role1} from "./nwabisa"
-import {firstname, surname, role as Role2} from "./johannes"
-import {firstname, surname, role as Role3} from "./alex"
+import { role as Role1} from "./nwabisa.js"
+import { role as Role2} from "./johannes.js"
+import { role as Role3} from "./alex.js"
 
-console.log('Roles:', nwabisa.Role1, johanes.Role2, alex.Role3)
+console.log('Roles:', Role1, Role2, Role3)
