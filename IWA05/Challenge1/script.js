@@ -34,7 +34,7 @@ shipping = null
 currency = "R"
 
 if (shoes + batteries + pens + shirts >= 1000) {
-	if (location === "NAM" && customers === 1) ;{
+	if (location === "NAM" && customers === 1){
 			if (location === "RSA")
 		    shipping = 0
 		}
