@@ -3,7 +3,7 @@ const banned_warning = 'Unfortunately we do not ship to your country of residenc
 const none_selected = 0
 
 const customers = 1
-let location = 'RSA'
+const location = "RSA"
 let currency = null
 
 if (location === "RSA") { 

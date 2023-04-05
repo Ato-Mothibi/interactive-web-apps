@@ -1,10 +1,10 @@
 const primaryPhone = 'O748105141'
-const secondaryPhone = 0219131568
+const secondaryPhone = '0219131568'
 
 // Only change below this line
 
 const primaryValid = typeof number == primaryPhone
-const secondaryValid = typeof secondaryPhone == 'number'
+const secondaryValid = typeof secondaryPhone === "string" && !isNaN(secondaryPhone)
 
 // const secondaryValid = typeof number == secondaryPhone
 
