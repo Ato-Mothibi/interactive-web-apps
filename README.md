@@ -39,4 +39,5 @@ It has: -IWA3-Challenge1: It's program that runs on js. It has to replace the wo
 The status value as declared initially (”parent”)
 The year as declared initially (2050)
 The total count of holidays for the above settings (9)
+                     
 
