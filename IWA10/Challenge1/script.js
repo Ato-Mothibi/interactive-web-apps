@@ -80,8 +80,11 @@ console.log(`Date change: ${correctDate.getDate().toString()}/${(correctDate.get
 console.log("First holday: " + holidays[9].date.toLocaleDateString("en-ZA"));
 console.log("Last holday: " + holidays[2].date.toLocaleDateString("en-ZA"));
 
+// Generates a random holiday index number between 0 and 8 (inclusive), then uses it to get a random holiday object from the holidays array.
 const randomHolidayIndex = Math.floor(Math.random() * 9)
 const randomHoliday = holidays[randomHolidayIndex]
+
+//Creates a formatted date string for the date property of the randomHoliday object
 const randomHolidayDate = randomHoliday.date instanceof Date ?
   `${randomHoliday.date.getDate().toString().padStart(2, '0')}/` +
   `${(randomHoliday.date.getMonth() + 1).toString().padStart(2, '0')}/` +
