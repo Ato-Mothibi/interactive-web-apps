@@ -10,7 +10,12 @@ function multiply(a, b) {
 
 function internal() {
 	const added = this.add(this.internal.a, this.internal.b);
-	console.log(added * this.internal.c);
+	//*console.log(added * this.internal.c);*// Another method
+
+	const multiplied = this.multiply(added, this.internal.c)
+
+	console.log( multiplied)
+	
 	return this;
 }
 
