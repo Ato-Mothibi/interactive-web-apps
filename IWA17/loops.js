@@ -30,7 +30,7 @@ const createData = () => {
   const startDay = current.getDay();
   const daysInMonth = getDaysInMonth(current);
 
-  const weeks = createArray(5, { week: 0, days: createArray(7, null) });
+  const weeks = createArray(6, { week: 0, days: createArray(7, null) });
   let value = null;
 
   for (let weekIndex in weeks) {
@@ -58,7 +58,7 @@ const createData = () => {
 const addCell = (classString, value, isToday) => {
     if (isToday) {
       classString += ' table__cell_today'; // add the "table__cell_today" class for the current date
-      value = `<span class="table__cell_today">${value}</span>`; // wrap the value with a span and add the "blue-text" class to it
+      value = `${value}`; // wrap the value with a span and add the "blue-text" class to it
     }
   
     return /* html */ `

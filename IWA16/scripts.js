@@ -66,10 +66,6 @@ const MONTHS = [
   };
   
   // Only edit below this comment
-  
-
-    
- 
 const createHtml = (athlete) => {
     const {firstName, surname, id, races} = athlete;
     const [latestRace] = races.slice(-1);
