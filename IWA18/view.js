@@ -1,4 +1,4 @@
-import { TABLES, COLUMNS, state } from './data'
+import { TABLES, COLUMNS, state } from './data.js'
 
 /**
  * Takes any order as an object literal (as saved in state) and converts it a
@@ -48,7 +48,6 @@ export const createOrderHtml = (order) => {
  *
  * @returns {HTMLElement}
  */
-
 const createTableOptionsHtml = () => {
     const fragment = document.createDocumentFragment()
 
@@ -116,7 +115,6 @@ for (const columnName of COLUMNS) {
  *
  * @param {object} newDragging 
  */
-
 export const updateDraggingHtml = (newDragging) => {
     const { over = state.dragging.over } = newDragging
 
@@ -138,7 +136,6 @@ export const updateDraggingHtml = (newDragging) => {
  * moved to. This should coincide with one of the values present in the COLUMNS
  * array in "data.js"
  */
-
 export const moveToColumn = (id, newColumn) => {
     const htmlSource = document.querySelector(`[data-id="${id}"]`) 
     const duplicate = htmlSource.cloneNode(true)
@@ -150,7 +147,6 @@ export const moveToColumn = (id, newColumn) => {
  * Starts the app focused on the "add order" button. This means that users can
  * immediately started adding an order by pressing the enter or spacebar.
  */
-
 html.other.add.focus()
 
 

@@ -58,7 +58,7 @@ const createData = () => {
 const addCell = (classString, value, isToday) => {
     if (isToday) {
       classString += ' table__cell_today'; // add the "table__cell_today" class for the current date
-      value = `${value}`; // wrap the value with a span and add the "blue-text" class to it
+      value = `${value}`; //To add the color to the text
     }
   
     return /* html */ `
