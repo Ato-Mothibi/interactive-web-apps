@@ -32,6 +32,25 @@ const handleDragOver = (event) => {
   htmlArea.addEventListener('dragover', handleDragOver);
 }
 
+
+//? button
+// Select the "Help" button
+const helpBtn = document.querySelector('[data-help]');
+const closeBtn = document.querySelector('[data-help-cancel]')
+
+// Add a click event listener to the "Help" button
+helpBtn.addEventListener('click', () => {
+  // Show the "Help" overlay
+  const helpOverlay = document.querySelector('[data-help-overlay]');
+  helpOverlay.showModal();
+
+  closeBtn.addEventListener('click', () => {
+    helpOverlay.close()
+
+  })
+});
+
+
   // add order button
   // Select the "Add Order" button
   const addOrderBtn = document.querySelector('[data-add]');
@@ -57,78 +76,66 @@ const handleDragOver = (event) => {
 
 });
 
-
-  // When the submit button is clicked, add the order to the selected table
-   submitOrderBtn.addEventListener('click', () => {
-    
-
-     
-        //Close the "Add Order" dialog
-        addOverlay.close();
-       });
-
+//Add button to add order in the Ordered column
 
 
 const handleAddSubmit = (event) => {
   event.preventDefault();
 
-// get the input values from the form
-  
-const title = document.querySelector('[data-add-title]').value;
-const table = document.querySelector('[data-add-table]').value;
 
-// create a new order element with the input values
-const newOrderElement = document.createElement('div');
-newOrderElement.classList.add('order');
-newOrderElement.dataset.table = table;
-newOrderElement.dataset.column = 'ordered';
-newOrderElement.textContent = title;
-
-const order = { id, title, table, created };
-const created = new Date();
-const id = Object.keys(state.orders).length + 1;
-state.orders[id] = order;
+  // Get form input values
+  const title = html.add.title.value;
+  const table = html.add.table.value;
 
 
-
-// append the new order element to the "ordered" column
- 
- const orderElement = createOrderHtml(order);
- html.area.ordered.append(orderElement);
-
- // Reset form and hide add overlay
- html.add.form.reset();
+  // Create new order object and add to state
+  const id = Object.keys(state.orders).length + 1;
+  const created = new Date();
+  const order = { id, title, table, created };
+  state.orders[id] = order;
 
 
- html.add.form.addEventListener('submit', handleAddSubmit);
+  // Create HTML element for new order and append to Ordered column
+  const orderElement = createOrderHtml(order);
+  html.area.ordered.append(orderElement);
+
+
+  // Reset form and hide add overlay
+  html.add.form.reset();
+  html.add.overlay.close();
+};
+
+
+html.add.form.addEventListener('submit', handleAddSubmit);
 html.add.cancel.addEventListener('click', () => {
   html.add.form.reset();
   html.add.overlay.close();
 });
 html.add.overlay.addEventListener('close', () => {
   html.add.form.reset();
+});
 
-  })
 
+// Cancel Button to close the add order overlay
+const handleAddCancel = (event) => {
+  event.preventDefault();
+
+
+  // Clear form
+  html.add.form.reset();
+
+
+  // Close overlay
+  html.add.overlay.removeAttribute('open');
 }
 
 
-//? button
-// Select the "Help" button
-const helpBtn = document.querySelector('[data-help]');
-const closeBtn = document.querySelector('[data-help-cancel]')
+html.add.form.addEventListener('submit', handleAddSubmit);
+html.add.cancel.addEventListener('click', handleAddCancel);
 
-// Add a click event listener to the "Help" button
-helpBtn.addEventListener('click', () => {
-  // Show the "Help" overlay
-  const helpOverlay = document.querySelector('[data-help-overlay]');
-  helpOverlay.showModal();
 
-  closeBtn.addEventListener('click', () => {
-    helpOverlay.close()
 
-  })
-});
+
 
 
 
