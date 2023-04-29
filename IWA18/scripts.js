@@ -181,13 +181,33 @@ html.edit.form.addEventListener('submit', handleEditSubmit);
 //Delete Button
 const handleDelete = () => {
   
-  const id = html.edit.id.value;
-  const table = html.edit.table.value;
+  // const id = html.edit.id.value;
+  // const table = html.edit.table.value;
   // delete state.orders[id]; // remove order from state
   // document.id.innerHTML = '';
   // let index = overlay.options.length;
   // html.edit.form.remove(id);
+
+  //   // Get form input values
+  // const title = html.add.title.value;
+  // const table = html.add.table.value;
+
+  // // Create new order object and add to state
+  // const id = Object.keys(state.orders).length + 1;
+  // const created = new Date();
+  // const order = { id, title, table, created };
+  // state.orders[id] = order;
+
+
+  // // Create HTML element for new order and append to Ordered column
+  // const orderElement = createOrderHtml(order);
+  // // html.area.ordered.append(orderElement).remove
+  // // const deleteOrder = html.area.ordered.append(orderElement)
+  // // deleteOrder.remove();
+  // orderElement.remove();
   
+
+  // html.other.order.remove();
   html.edit.form.remove();
   // html.area.orderElement.remove();
   html.edit.overlay.close(); // close the Edit Order overlay
