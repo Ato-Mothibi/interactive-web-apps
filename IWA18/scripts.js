@@ -12,27 +12,6 @@ import {createOrderHtml,html, updateDraggingHtml,moveToColumn} from "./view.js";
  * @param {Event} event
  */
 
-
-// const handleDragOver = (event) => {
-//   event.preventDefault();
-//   const path = event.path || event.composedPath();
-//   let column = null;
-//   for (const element of path) {
-//     const { area } = element.dataset;
-//     if (area) {
-//       column = area;
-//       break;
-//     }
-//   }
-//   if (!column) return;
-//   updateDragging({ over: column });
-//   updateDraggingHtml({ over: column });
-//   htmlArea.addEventListener("dragover", handleDragOver);
-// };
-
-
-
-
 const handleDragOver = (event) => {
   event.preventDefault();
   const path = event.path || event.composedPath();
@@ -50,7 +29,6 @@ const handleDragOver = (event) => {
 
   updateDragging({ over: column });
   updateDraggingHtml({over:column });
-  //htmlArea.addEventListener("dragover", handleDragOver);
 };
 let dragged;
 const handleDragStart = (e) => {
@@ -70,17 +48,6 @@ for (const htmlArea of Object.values(html.area)){
   htmlArea.addEventListener("drop", handleDragDrop);
   htmlArea.addEventListener("dragend", handleDragEnd);
 }
-
-
-
-
-
-// const handleDragStart = () => {
-//   htmlColumn.addEventListener("dragstart", handleDragStart);
-// };
-// const handleDragEnd = () => {
-//   htmlColumn.addEventListener("dragend", handleDragEnd);
-// };
 
 //----Opens Help screen -----
 const handleHelpToggle = () => {
