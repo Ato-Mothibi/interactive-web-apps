@@ -100,6 +100,13 @@ const handleAddSubmit = (event) => {
   const orderElement = createOrderHtml(order);
   html.area.ordered.append(orderElement);
 
+  // Add click event listener to new order element
+  orderElement.addEventListener('click', () => {
+    // Set title and table input values in Edit form to match clicked order
+    html.edit.title.value = order.title;
+    html.edit.table.value = order.table;
+  });
+
 
   // Reset form and hide add overlay
   html.add.form.reset();
@@ -142,6 +149,7 @@ html.add.cancel.addEventListener('click', handleAddCancel);
 
 //Edit Order overlay Open
 const handleEditToggle = () => {
+
   html.edit.overlay.toggleAttribute('open');
 };
 html.other.grid.addEventListener('click', handleEditToggle);
@@ -150,26 +158,28 @@ html.other.grid.addEventListener('click', handleEditToggle);
 //Submit Changes
 const handleEditSubmit = (event) => {
   event.preventDefault();
-  const id = html.edit.id.value;
-  const title = html.edit.title.value;
-  const table = html.edit.table.value;
+//   const id = html.edit.id.value;
+//   const title = html.edit.title.value;
+//   const table = html.edit.table.value;
  
-  const order = state.orders.find((order) => order.id === id);
-  if (order) {
-  order.title = title;
-  order.table = table;
-// update the order element on the page
-const orderElement = document.querySelector(`.order[data-id="${id}"]`);
-if (orderElement) {
-  orderElement.querySelector('[data-order-title]').textContent = title;
-  orderElement.querySelector('[data-order-table]').textContent = table;
-};
+//   const order = state.orders.find((order) => order.id === id);
+//   if (order) {
+//   order.title = title;
+//   order.table = table;
+// // update the order element on the page
+// const orderElement = document.querySelector(`.order[data-id="${id}"]`);
+// if (orderElement) {
+//   orderElement.querySelector('[data-order-title]').textContent = title;
+//   orderElement.querySelector('[data-order-table]').textContent = table;
+// };
+
+
+
   };
 
 
 // close the "Edit Order" overlay
 html.edit.overlay.close();
-};
 
 
 // add an event listener to the "submit" button in the "Edit Order" form
@@ -179,7 +189,8 @@ html.edit.form.addEventListener('submit', handleEditSubmit);
 
 
 //Delete Button
-const handleDelete = () => {
+const handleDelete = (event) => {
+  event.preventDefault();
   
   // const id = html.edit.id.value;
   // const table = html.edit.table.value;
@@ -206,12 +217,30 @@ const handleDelete = () => {
   // // deleteOrder.remove();
   // orderElement.remove();
   
-
-  // html.other.order.remove();
-  html.edit.form.remove();
+  
+  // event.html.other.order.textContent= ''
+  // html.edit.form.remove();
   // html.area.orderElement.remove();
-  html.edit.overlay.close(); // close the Edit Order overlay
-  html.edit.form.reset(); // reset the form fields
+  // html.edit.overlay.close(); // close the Edit Order overlay
+  // html.edit.form.reset(); // reset the form fields
+
+ // Get the ID of the selected order
+
+ const orderId = html.edit.id.value;
+
+ // Remove the order from state
+ delete state.orders[orderId];
+
+ // Remove the corresponding HTML element from the Ordered column
+ const orderElement = html.other.order.querySelector(`[data-id="${orderId}"]`);
+ orderElement.remove();
+
+ html.edit.form.remove(); 
+
+//  // Clear the input fields in the Edit form
+//  html.edit.title.value = '';
+//  html.edit.table.value = '';
+//  html.edit.id.value = '';
 };
 html.edit.delete.addEventListener('click', handleDelete);
 
