@@ -33,10 +33,6 @@ import {createOrderHtml,html, updateDraggingHtml,moveToColumn} from "./view.js";
 
 
 
-const handleDragStart = (event) => {
-  event.preventDefault();
-};
-
 const handleDragOver = (event) => {
   event.preventDefault();
   const path = event.path || event.composedPath();
@@ -53,50 +49,26 @@ const handleDragOver = (event) => {
   if (!column) return;
 
   updateDragging({ over: column });
-  updateDraggingHtml({ over: column, event });
-
-  return false;
+  updateDraggingHtml({over:column });
+  //htmlArea.addEventListener("dragover", handleDragOver);
 };
-
-const handleDragEnd = (event) => {
-  event.preventDefault();
-  const path = event.path || event.composedPath();
-
-  let column = null;
-  for (const element of path) {
-    const { area } = element.dataset;
-    if (area) {
-      column = area;
-      break;
-    }
-  }
-
-  if (!column) return;
-
-  updateDragging({ over: null });
-  updateDraggingHtml({ over: null, event });
-
-  const orderId = event.dataTransfer.getData("text/plain");
-  if (orderId) {
-    const order = state.orders[orderId];
-    if (order && order.column !== column) {
-      removeOrder(orderId);
-      moveToColumn(orderId, column);
-    }
-  }
+let dragged;
+const handleDragStart = (e) => {
+  dragged = e.target;
 };
-
-for (const htmlColumn of Object.values(html.columns)) {
-  htmlColumn.addEventListener("dragstart", handleDragStart);
-  htmlColumn.addEventListener("dragend", handleDragEnd);
-}
-
-for (const htmlArea of Object.values(html.area)) {
+const handleDragDrop = (f) => {
+  f.target.append(dragged);
+};
+const handleDragEnd= (g) =>{
+const background = g.target.closest("section");
+background.style.backgroundColor="";
+};
+//attach event listeners to each column
+for (const htmlArea of Object.values(html.area)){
   htmlArea.addEventListener("dragover", handleDragOver);
-  htmlArea.addEventListener("drop", handleDragEnd);
-  htmlArea.addEventListener("dragleave", () => {
-    updateDraggingHtml({ over: null });
-  });
+  htmlArea.addEventListener("dragstart", handleDragStart);
+  htmlArea.addEventListener("drop", handleDragDrop);
+  htmlArea.addEventListener("dragend", handleDragEnd);
 }
 
 
@@ -125,8 +97,6 @@ html.add.cancel.addEventListener("click", handleAddToggle);
 
 
 
-
-
 //---Submit information ----
 const handleAddSubmit = (event) => {
   event.preventDefault(); // method is used to prevent the browser from executing the default action
@@ -142,11 +112,6 @@ const handleAddSubmit = (event) => {
   html.add.overlay.close();
 };
 html.add.form.addEventListener("submit", handleAddSubmit);
-
-
-
-
-
 
 
 //----- Opens edit menu -----
