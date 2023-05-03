@@ -19,6 +19,9 @@ const getDaysInMonth = (date) => new Date(date.getFullYear(), date.getMonth() + 
 
 // Only edit below 
 
+//**creates an array of 5 objects, where each object has 
+// week property set to a number and a days property set to 
+//an array of 7 null values
 const createArray = (length, defaultValue) => {
   return Array.from({ length }, () => defaultValue);
 };
@@ -55,6 +58,7 @@ const createData = () => {
   return weeks;
 };
 
+//  Returns a string containing an HTML table cell with the specified properties and value
 const addCell = (classString, value, isToday) => {
     if (isToday) {
       classString += ' table__cell_today'; // add the "table__cell_today" class for the current date
@@ -68,6 +72,7 @@ const addCell = (classString, value, isToday) => {
     `;
   };
 
+//  Returns a string containing an HTML table cell with the specified properties and value
 const createHtml = (data) => {
   let result = '';
 
@@ -97,10 +102,7 @@ const createHtml = (data) => {
   return result;
 };
 
-    
-
   // Only edit above
-  
   const current = new Date();
   document.querySelector('[data-title]').innerText = `${MONTHS[current.getMonth()]} ${current.getFullYear()}`;
   

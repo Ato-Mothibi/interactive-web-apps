@@ -30,43 +30,42 @@ const handleDragOver = (event) => {
   updateDragging({ over: column });
   updateDraggingHtml({over:column });
 };
-let dragged;
-const handleDragStart = (e) => {
-  dragged = e.target;
-};
-const handleDragDrop = (f) => {
-  f.target.append(dragged);
-};
-const handleDragEnd= (g) =>{
-const background = g.target.closest("section");
-background.style.backgroundColor="";
-};
-//attach event listeners to each column
-for (const htmlArea of Object.values(html.area)){
-  htmlArea.addEventListener("dragover", handleDragOver);
-  htmlArea.addEventListener("dragstart", handleDragStart);
-  htmlArea.addEventListener("drop", handleDragDrop);
-  htmlArea.addEventListener("dragend", handleDragEnd);
-}
 
-//----Opens Help screen -----
-const handleHelpToggle = () => {
-  html.help.overlay.toggleAttribute("open");
-};
-html.help.cancel.addEventListener("click", handleHelpToggle);
-html.other.help.addEventListener("click", handleHelpToggle);
-//------Opens Add order menu------
+// ?
+//The help modal
+const helpBtn = document.querySelector('[data-help]');
+const closeBtn = document.querySelector('[data-help-cancel]')
+
+
+// Add a click event listener to the "Help" button
+helpBtn.addEventListener('click', () => {
+  // Show the "Help" overlay
+  const helpOverlay = document.querySelector('[data-help-overlay]');
+  helpOverlay.showModal();
+
+
+  closeBtn.addEventListener('click', () => {
+    helpOverlay.close()
+  })
+});
+
+
+
+//Opens Add order menu
 const handleAddToggle = () => {
   html.add.overlay.toggleAttribute("open");
 };
+
+
 html.other.add.addEventListener("click", handleAddToggle);
 html.add.cancel.addEventListener("click", handleAddToggle);
 
 
-
-//---Submit information ----
+//Submit information to the column
 const handleAddSubmit = (event) => {
-  event.preventDefault(); // method is used to prevent the browser from executing the default action
+  event.preventDefault(); 
+
+//Creates a new order
   const order = {
     id: state.orders,
     title: html.add.title.value,
@@ -75,21 +74,35 @@ const handleAddSubmit = (event) => {
   };
   const orderElement = createOrderHtml(order);
   html.area.ordered.append(orderElement);
+
+
+    // Add click event listener to new order element
+  orderElement.addEventListener('click', () => {
+    // Set title and table input values in Edit form to match clicked order
+    html.edit.title.value = order.title;
+    html.edit.table.value = order.table;
+  });
+
+// Reset form and hide add overlay 
   html.add.form.reset();
   html.add.overlay.close();
 };
 html.add.form.addEventListener("submit", handleAddSubmit);
 
 
-//----- Opens edit menu -----
+//Edit modal
 const handleEditToggle = () => {
   html.edit.overlay.toggleAttribute("open");
 };
 html.other.grid.addEventListener("click", handleEditToggle);
 html.edit.cancel.addEventListener("click", handleEditToggle);
-//----- Submit edited information -----
+
+
+//Submit edited information
 const handleEditSubmit = (event) => {
-  event.preventDefault(); // method is used to prevent the browser from executing the default action
+  event.preventDefault(); 
+
+//creates a new object called order with some properties  
   const { id, title, table, created, column } = {
     title: html.edit.title.value,
     table: html.edit.table.value,
@@ -98,40 +111,50 @@ const handleEditSubmit = (event) => {
     column: html.edit.column.value,
   };
   const order = { id, title, table, created, column };
-  // Find the index of the order to be updated
+
+// Find the index of the order to be updated
   let orderId = -1; //-1 allows us to check if an order index has been found
-  // Find the order element in the HTML
+
+
+// Find the order element in the HTML
   for (let i = 0; i < state.orders.length; i++) {
     if (state.orders[i].id === id) {
       orderId = i;
       break;
     }
   }
-  // Update the order data in the state object
+
+
+// Update the order data in the state object
   state.orders[orderId] = createOrderData(order);
-  // Update the order element with the new data
+
+// Update the order element with the new data
   const newOrder = createOrderHtml(order);
   const oldOrder= document.querySelector(`[data-id="${id}"]`);
   oldOrder.replaceWith(newOrder);
+
+
   // Move the order element to the correct column in the HTML
-  switch (column) {
-    case "ordered":
-      html.area.ordered.append(newOrder);
-      break;
-    case "preparing":
-      html.area.preparing.append(newOrder);
-      break;
-    case "served":
-      html.area.served.append(newOrder);
-      break;
-    default:
-      break;
-  }
-  html.edit.overlay.close();
+const areaMap = {
+  ordered: html.area.ordered,
+  preparing: html.area.preparing,
+  served: html.area.served
 };
+
+if (column in areaMap) {
+  areaMap[column].append(newOrder);
+}
+html.edit.overlay.close();
+};
+
 html.edit.form.addEventListener("submit", handleEditSubmit);
+
+
+//Delete funtion
 const handleDelete = (event) => {
   event.preventDefault(); // method is used to prevent the browser from executing the default action
+
+//creates a new object called order with some properties
   const { id, title, table, created, column } = {
     title: html.edit.title.value,
     table: html.edit.table.value,
@@ -139,9 +162,12 @@ const handleDelete = (event) => {
     id: state.orders,
     column: html.edit.column.value,
   };
+
   const order = { id, title, table, created, column };
+
   // Find the index of the order to be updated
   let orderId = -1; //-1 allows us to check if an order index has been found
+  
   // Find the order element in the HTML
   for (let i = 0; i < state.orders.length; i++) {
     if (state.orders[i].id === id) {
@@ -159,5 +185,30 @@ html.edit.delete.addEventListener("click", handleDelete);
 
 
 
+//  It sets the dragged variable to the element being dragged
+let dragged;
+const handleDragStart = (event) => {
+  dragged = event.target;
+};
+
+//It appends the dragged element to the target element
+const handleDragDrop = (event) => {
+  event.target.append(dragged);
+};
 
 
+// It gets the closest parent element with a section tag and 
+// sets its background color to an empty string
+const handleDragEnd= (event) =>{
+const background = event.target.closest("section");
+event.target.closest("section").style.backgroundColor = "";
+};
+
+
+//attach event listeners to each column
+for (const htmlArea of Object.values(html.area)){
+  htmlArea.addEventListener("dragover", handleDragOver);
+  htmlArea.addEventListener("dragstart", handleDragStart);
+  htmlArea.addEventListener("drop", handleDragDrop);
+  htmlArea.addEventListener("dragend", handleDragEnd);
+}
