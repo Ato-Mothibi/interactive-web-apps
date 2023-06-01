@@ -5,11 +5,11 @@
 > I had to modify the *scripts.js* file, where most of the event-specific behaviour is located. All event listeners and handlers have been created already. However, only the first handleDragOver handler’s logic has been written and documented. I was required to add the logic for all remaining event handlers (making use of the *data.js* and *view.js* file exports) to ensure that the following user stories are met:
 > 
 >> - The “Add Order” button should start as focused, meaning space/enter can be pressed immediately to add an order.
-    - Click the “?” icon should open a “Help” overlay that provides instructions on how to use the app.
-    - If the “Help” overlay is open, clicking the “Close” button should remove the overlay.
-    - If any overlay is closed the focus should be returned to the “Add Order” button.
-    - Clicking “Add Order” should open an “Add Order” overlay that allows the entering of order text and an associated table.
-    - Clicking “Cancel” in the “Add Order” overlay should remove the overlay without adding the information as an order.
+   > - Click the “?” icon should open a “Help” overlay that provides instructions on how to use the app.
+   > - If the “Help” overlay is open, clicking the “Close” button should remove the overlay.
+   > - If any overlay is closed the focus should be returned to the “Add Order” button.
+   > - Clicking “Add Order” should open an “Add Order” overlay that allows the entering of order text and an associated table.
+   > - Clicking “Cancel” in the “Add Order” overlay should remove the overlay without adding the information as an order.
     - Clicking the “Add” button in the “Add Order” overlay should remove the overlay and add a new order to the “Ordered” column.
     - If the “Add Order” overlay is closed (either with “Cancel” or “Add”) and it is opened again it should be blank (not have information from the last time it was opened).
     - If an order has been added and it is clicked on the “Edit Order” overlay should appear.
