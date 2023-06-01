@@ -1,8 +1,16 @@
 # Kitchen Express IWA_18.4 
 
-This challenge, is provided with all HTML, CSS and JavaScript code used in a web app called ***“Kitchen Express”***.
+## Table of contents
+- [Kitchen Express IWA\_18.4](#kitchen-express-iwa_184)
+  - [Table of contents](#table-of-contents)
+      - [user stories are met:](#user-stories-are-met)
+    - [Link to GitHub file](#link-to-github-file)
+    - [The file is created with:](#the-file-is-created-with)
+        - [Line 1 and 2 from ***scripts.js***](#line-1-and-2-from-scriptsjs)
+  - [The rendered output looks like this:](#the-rendered-output-looks-like-this)
 
-> I had to modify the *scripts.js* file, where most of the event-specific behaviour is located. All event listeners and handlers have been created already. However, only the first handleDragOver handler’s logic has been written and documented. I was required to add the logic for all remaining event handlers (making use of the *data.js* and *view.js* file exports) to ensure that the following user stories are met:
+> 👩🏾‍💻 I had to modify the *scripts.js* file, where most of the event-specific behaviour is located. All event listeners and handlers have been created already. However, only the first handleDragOver handler’s logic has been written and documented. I was required to add the logic for all remaining event handlers (making use of the *data.js* and *view.js* file exports) to ensure that the following 
+#### user stories are met:
 > 
 >>    - The “Add Order” button should start as focused, meaning space enter can be pressed immediately to add an order.
 >>    - Click the “?” icon should open a “Help” overlay that provides instructions on how to use the app.
@@ -17,9 +25,11 @@ This challenge, is provided with all HTML, CSS and JavaScript code used in a web
 >>    - If the “Cancel” button is pressed in the “Edit Order” overlay it should close the overlay without applying the changes entered into the overlay inputs.
 >>    - If the “Update” button is pressed in the “Edit Order” overlay it should close the overlay and apply the changes entered to the relevant order.
 >>    - If the “Status” value is changed and “Update” is pressed in the “Edit Order” overlay then the order should be moved to the column selected in the dropdown.
+>
 
+### Link to GitHub file
 
-Here's the link to the [file's Github](https://github.com/Ato-Mothibi/interactive-web-apps.git).
+🔗 Here's the link to the [file's Github](https://github.com/Ato-Mothibi/interactive-web-apps.git).
 
 ### The file is created with:
 
@@ -39,4 +49,4 @@ Shows that I imported objects from other 2 scripts.
 
 ## The rendered output looks like this:
 
-(![Interphase of the project](image/interphase.png))
+![Interphase of the project](image/interphase.png)
