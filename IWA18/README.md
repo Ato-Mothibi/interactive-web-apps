@@ -21,7 +21,7 @@ This challenge, is provided with all HTML, CSS and JavaScript code used in a web
 
 Here's the link to the [file's Github](https://github.com/Ato-Mothibi/interactive-web-apps.git).
 
-The file is created with:
+### The file is created with:
 
 1. HTML 
 2. CSS
@@ -30,13 +30,13 @@ The file is created with:
         - scripts.js
         - view.js
 
-###### Line 1 and 2 from ***scripts.js***
+##### Line 1 and 2 from ***scripts.js***
 
         import { COLUMNS,state,updateDragging,createOrderData,TABLES} from "./data.js";
         import {createOrderHtml,html, updateDraggingHtml,moveToColumn} from "./view.js";   
 
 Shows that I imported objects from other 2 scripts.
 
-The rendered output looks like this:
+## The rendered output looks like this:
 
 (![Interphase of the project](image/interphase.png))
