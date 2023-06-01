@@ -17,7 +17,7 @@ This challenge, is provided with all HTML, CSS and JavaScript code used in a web
 >>    - If the “Cancel” button is pressed in the “Edit Order” overlay it should close the overlay without applying the changes entered into the overlay inputs.
 >>    - If the “Update” button is pressed in the “Edit Order” overlay it should close the overlay and apply the changes entered to the relevant order.
 >>    - If the “Status” value is changed and “Update” is pressed in the “Edit Order” overlay then the order should be moved to the column selected in the dropdown.
->
+
 
 Here's the link to the [file's Github](https://github.com/Ato-Mothibi/interactive-web-apps.git).
 
