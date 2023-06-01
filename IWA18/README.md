@@ -30,7 +30,7 @@ The file is created with:
         - scripts.js
         - view.js
 
-Line 1 and 2 from ***scripts.js***
+###### Line 1 and 2 from ***scripts.js***
 
         import { COLUMNS,state,updateDragging,createOrderData,TABLES} from "./data.js";
         import {createOrderHtml,html, updateDraggingHtml,moveToColumn} from "./view.js";   
