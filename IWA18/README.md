@@ -26,9 +26,9 @@ Here's the link to the [file's Github](https://github.com/Ato-Mothibi/interactiv
 1. HTML 
 2. CSS
 3. JavaScript: 
-        - data.js
-        - scripts.js
-        - view.js
+    - data.js
+    - scripts.js
+    - view.js
 
 ##### Line 1 and 2 from ***scripts.js***
 
